@@ -1,0 +1,4 @@
+/Backend/target/
+.metadata/
+node_modules/
+.DS_Store
