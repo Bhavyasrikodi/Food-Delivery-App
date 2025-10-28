@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id @GeneratedValue
-    private Long id;
+    private Long userId;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -30,20 +30,20 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Long id, String username, String password, Role role) {
+	public User(Long userId, String username, String password, Role role) {
 		super();
-		this.id = id;
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.role = role;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {
@@ -72,7 +72,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
+		return "User [id=" + userId + ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
     
     

@@ -9,7 +9,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Admin {
     @Id @GeneratedValue
-    private Long id;
+    private Long adminId;
 
     private String name;
     private String email;
@@ -23,20 +23,20 @@ public class Admin {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Admin(Long id, String name, String email, User user) {
+	public Admin(Long adminId, String name, String email, User user) {
 		super();
-		this.id = id;
+		this.adminId = adminId;
 		this.name = name;
 		this.email = email;
 		this.user = user;
 	}
-
-	public Long getId() {
-		return id;
+	
+	public Long getAdminId() {
+		return adminId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAdminId(Long adminId) {
+		this.adminId = adminId;
 	}
 
 	public String getName() {
@@ -65,7 +65,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", name=" + name + ", email=" + email + ", user=" + user + "]";
+		return "Admin [id=" + adminId + ", name=" + name + ", email=" + email + ", user=" + user + "]";
 	}
     
     

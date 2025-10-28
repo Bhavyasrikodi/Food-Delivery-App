@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Table(name = "orders")
 public class Order {
     @Id @GeneratedValue
-    private Long id;
+    private Long orderId;
 
     private LocalDateTime orderTime;
     private String status;
@@ -29,10 +29,10 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(Long id, LocalDateTime orderTime, String status, String shippingAddress, Customer customer,
+	public Order(Long orderId, LocalDateTime orderTime, String status, String shippingAddress, Customer customer,
 			Restaurant restaurant) {
 		super();
-		this.id = id;
+		this.orderId = orderId;
 		this.orderTime = orderTime;
 		this.status = status;
 		this.shippingAddress = shippingAddress;
@@ -40,12 +40,14 @@ public class Order {
 		this.restaurant = restaurant;
 	}
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 	public LocalDateTime getOrderTime() {
@@ -90,7 +92,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", orderTime=" + orderTime + ", status=" + status + ", shippingAddress="
+		return "Order [id=" + orderId + ", orderTime=" + orderTime + ", status=" + status + ", shippingAddress="
 				+ shippingAddress + ", customer=" + customer + ", restaurant=" + restaurant + "]";
 	}
 

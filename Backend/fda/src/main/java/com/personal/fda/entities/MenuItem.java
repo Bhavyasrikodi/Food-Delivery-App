@@ -9,8 +9,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class MenuItem {
     @Id @GeneratedValue
-    private Long id;
-
+    private Long menuItemId;
     private String name;
     private String description;
     private Double price;
@@ -33,10 +32,10 @@ public class MenuItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MenuItem(Long id, String name, String description, Double price, String availabilityTime, String dietaryInfo,
+	public MenuItem(Long menuItemId, String name, String description, Double price, String availabilityTime, String dietaryInfo,
 			String tasteInfo, String nutritionalInfo, boolean inStock, Restaurant restaurant, MenuCategory category) {
 		super();
-		this.id = id;
+		this.menuItemId = menuItemId;
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -49,12 +48,14 @@ public class MenuItem {
 		this.category = category;
 	}
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getMenuItemId() {
+		return menuItemId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMenuItemId(Long menuItemId) {
+		this.menuItemId = menuItemId;
 	}
 
 	public String getName() {
@@ -139,7 +140,7 @@ public class MenuItem {
 
 	@Override
 	public String toString() {
-		return "MenuItem [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+		return "MenuItem [id=" + menuItemId + ", name=" + name + ", description=" + description + ", price=" + price
 				+ ", availabilityTime=" + availabilityTime + ", dietaryInfo=" + dietaryInfo + ", tasteInfo=" + tasteInfo
 				+ ", nutritionalInfo=" + nutritionalInfo + ", inStock=" + inStock + ", restaurant=" + restaurant
 				+ ", category=" + category + "]";

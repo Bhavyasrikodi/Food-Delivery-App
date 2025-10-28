@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class OrderItem {
     @Id @GeneratedValue
-    private Long id;
+    private Long orderItemId;
 
     private int quantity;
     private double price;
@@ -27,21 +27,22 @@ public class OrderItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderItem(Long id, int quantity, double price, Order order, MenuItem menuItem) {
+	public OrderItem(Long orderItemId, int quantity, double price, Order order, MenuItem menuItem) {
 		super();
-		this.id = id;
+		this.orderItemId = orderItemId;
 		this.quantity = quantity;
 		this.price = price;
 		this.order = order;
 		this.menuItem = menuItem;
 	}
 
-	public Long getId() {
-		return id;
+
+	public Long getOrderItemId() {
+		return orderItemId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setOrderItemId(Long orderItemId) {
+		this.orderItemId = orderItemId;
 	}
 
 	public int getQuantity() {
@@ -78,7 +79,7 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-		return "OrderItem [id=" + id + ", quantity=" + quantity + ", price=" + price + ", order=" + order
+		return "OrderItem [id=" + orderItemId + ", quantity=" + quantity + ", price=" + price + ", order=" + order
 				+ ", menuItem=" + menuItem + "]";
 	}
     

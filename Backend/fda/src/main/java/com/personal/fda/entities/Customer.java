@@ -9,7 +9,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Customer {
     @Id @GeneratedValue
-    private Long id;
+    private Long customerId;
 
     private String name;
     private String email;
@@ -25,9 +25,9 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(Long id, String name, String email, String contactNumber, String address, User user) {
+	public Customer(Long customerId, String name, String email, String contactNumber, String address, User user) {
 		super();
-		this.id = id;
+		this.customerId = customerId;
 		this.name = name;
 		this.email = email;
 		this.contactNumber = contactNumber;
@@ -35,12 +35,14 @@ public class Customer {
 		this.user = user;
 	}
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {
@@ -85,7 +87,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", contactNumber=" + contactNumber
+		return "Customer [id=" + customerId + ", name=" + name + ", email=" + email + ", contactNumber=" + contactNumber
 				+ ", address=" + address + ", user=" + user + "]";
 	}
     
