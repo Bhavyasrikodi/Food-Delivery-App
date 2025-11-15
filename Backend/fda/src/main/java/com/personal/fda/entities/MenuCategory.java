@@ -10,24 +10,24 @@ import jakarta.persistence.Id;
 @Entity
 public class MenuCategory {
     @Id @GeneratedValue
-    private Long menuCtegoryId;
+    private Long menuCategoryId;
     private String name;
 	public MenuCategory() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MenuCategory(Long menuCtegoryId, String name) {
+	public MenuCategory(Long menuCategoryId, String name) {
 		super();
-		this.menuCtegoryId = menuCtegoryId;
+		this.menuCategoryId = menuCategoryId;
 		this.name = name;
 	}
 	
 	
-	public Long getMenuCtegoryId() {
-		return menuCtegoryId;
+	public Long getMenuCategoryId() {
+		return menuCategoryId;
 	}
-	public void setMenuCtegoryId(Long menuCtegoryId) {
-		this.menuCtegoryId = menuCtegoryId;
+	public void setMenuCategoryId(Long menuCategoryId) {
+		this.menuCategoryId = menuCategoryId;
 	}
 	public String getName() {
 		return name;
@@ -37,7 +37,7 @@ public class MenuCategory {
 	}
 	@Override
 	public String toString() {
-		return "MenuCategory [id=" + menuCtegoryId + ", name=" + name + "]";
+		return "MenuCategory [id=" + menuCategoryId + ", name=" + name + "]";
 	}
 
     

@@ -7,5 +7,5 @@ import com.personal.fda.entities.MenuCategory;
 
 @Repository
 public interface MenuCategoryRepository extends JpaRepository<MenuCategory,Long>{
-
+	MenuCategory findByMenuCategoryId(Long menuCategoryId);
 }

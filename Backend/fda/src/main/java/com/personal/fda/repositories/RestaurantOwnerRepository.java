@@ -8,4 +8,5 @@ import com.personal.fda.entities.RestaurantOwner;
 @Repository
 public interface RestaurantOwnerRepository extends JpaRepository<RestaurantOwner,Long>{
 
+	RestaurantOwner findByRestaurantOwnerId(Long restaurantOwnerId);
 }

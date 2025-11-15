@@ -7,5 +7,5 @@ import com.personal.fda.entities.Restaurant;
 
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant,Long>{
-
+	Restaurant findByRestaurantId(Long restaurantId);
 }
