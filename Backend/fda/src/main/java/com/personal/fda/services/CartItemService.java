@@ -6,4 +6,6 @@ import com.personal.fda.entities.CartItem;
 public interface CartItemService {
 
 	public CartItem addToCart(Long customerId,CartItemDTO cartItemDTO);
+	
+	public double getCartTotal(Long customerId);
 }

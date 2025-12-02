@@ -1,13 +1,12 @@
 package com.personal.fda.dtos;
 
-import com.personal.fda.entities.MenuItem;
-
 
 public class CartItemDTO {
 
 	private int quantity;
     private String menuItemName;
     private String restaurantName;
+    private Double totalPrice;
     
 	public CartItemDTO() {
 		super();
@@ -16,11 +15,25 @@ public class CartItemDTO {
 
 	
 
-	public CartItemDTO(int quantity, String menuItemName, String restaurantName) {
+	public CartItemDTO(int quantity, String menuItemName, String restaurantName,Double totalPrice) {
 		super();
 		this.quantity = quantity;
 		this.menuItemName = menuItemName;
 		this.restaurantName = restaurantName;
+		this.totalPrice=totalPrice;
+	}
+
+
+	
+
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+
+
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 
@@ -61,9 +74,13 @@ public class CartItemDTO {
 
 	@Override
 	public String toString() {
-		return "CartItemDTO [quantity=" + quantity + ", menuItemName=" + menuItemName + ", RestaurantName="
-				+ restaurantName + "]";
+		return "CartItemDTO [quantity=" + quantity + ", menuItemName=" + menuItemName + ", restaurantName="
+				+ restaurantName + ", totalPrice=" + totalPrice + "]";
 	}
+
+
+
+	
 
 	
     

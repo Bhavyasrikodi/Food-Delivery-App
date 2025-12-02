@@ -3,6 +3,7 @@ package com.personal.fda.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,11 @@ public class CartItemController {
 		CartItemDTO dto=this.modelMapper.map(item, CartItemDTO.class);
 		dto.setRestaurantName(cartItemDTO.getRestaurantName());
 		return ResponseEntity.ok(dto);
+	}
+	
+	@GetMapping("/getTotalPriceOfCart")
+	public ResponseEntity<Double> getCartTotal(@RequestParam Long customerId) {
+		Double totalPrice=this.cartItemService.getCartTotal(customerId);
+		return ResponseEntity.ok(totalPrice);
 	}
 }

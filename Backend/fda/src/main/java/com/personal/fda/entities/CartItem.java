@@ -20,21 +20,27 @@ public class CartItem {
     @ManyToOne
     @JoinColumn(name = "menu_item_id", nullable = false)
     private MenuItem menuItem;
+    
+    private Double totalPrice;
 
 	public CartItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CartItem(Long cartItemId, int quantity, Customer customer, MenuItem menuItem) {
+
+	public CartItem(Long cartItemId, int quantity, Customer customer, MenuItem menuItem, Double totalPrice) {
 		super();
 		this.cartItemId = cartItemId;
 		this.quantity = quantity;
 		this.customer = customer;
 		this.menuItem = menuItem;
+		this.totalPrice = totalPrice;
 	}
 
-	
+
+
+
 
 	public Long getCartItemId() {
 		return cartItemId;
@@ -68,11 +74,21 @@ public class CartItem {
 		this.menuItem = menuItem;
 	}
 
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
 	@Override
 	public String toString() {
-		return "CartItem [id=" + cartItemId + ", quantity=" + quantity + ", customer=" + customer + ", menuItem=" + menuItem
-				+ "]";
+		return "CartItem [cartItemId=" + cartItemId + ", quantity=" + quantity + ", customer=" + customer
+				+ ", menuItem=" + menuItem + ", totalPrice=" + totalPrice + "]";
 	}
+
     
     
 }
