@@ -34,47 +34,59 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private CustomerRepository customerRepository;
 	
+	
 	@Transactional
-    public Order placeOrderFromCart(Long customerId) {
-        Customer customer = customerRepository.getCustomerById(customerId);
-        if (customer == null) {
-            throw new IllegalArgumentException("Customer not found for id: " + customerId);
-        }
+	public Order placeOrderFromCart(Long customerId) {
 
-        List<CartItem> cartItems = cartItemRepository.cartItemsByCustomerId(customerId);
-        if (cartItems == null || cartItems.isEmpty()) {
-            throw new IllegalStateException("Cart is empty. Nothing to place an order for.");
-        }
-        String shippingAddress=customer.getAddress();
-        
-        Restaurant restaurant = cartItems.get(0).getMenuItem().getRestaurant();
+	    Customer customer = customerRepository.getCustomerById(customerId);
+	    if (customer == null) {
+	        throw new IllegalArgumentException("Customer not found for id: " + customerId);
+	    }
 
-        
-        Order order = new Order();
-        order.setCustomer(customer);
-        order.setOrderTime(LocalDateTime.now());
-        order.setStatus("PLACED"); 
-        order.setShippingAddress(shippingAddress);
-        order.setRestaurant(restaurant);
+	    List<CartItem> cartItems = cartItemRepository.cartItemsByCustomerId(customerId);
+	    if (cartItems == null || cartItems.isEmpty()) {
+	        throw new IllegalStateException("Cart is empty. Nothing to place an order for.");
+	    }
 
-        Order savedOrder = orderRepository.save(order);
+	    String shippingAddress = customer.getAddress();
+	    Restaurant restaurant = cartItems.get(0).getMenuItem().getRestaurant();
 
-     
-        List<OrderItem> orderItems = cartItems.stream().map(ci -> {
-            OrderItem oi = new OrderItem();
-            oi.setOrder(savedOrder);
-            oi.setMenuItem(ci.getMenuItem());
-            oi.setQuantity(ci.getQuantity());
-            
-            oi.setPrice(ci.getTotalPrice());
-            return oi;
-        }).collect(Collectors.toList());
+	    
+	    Order order = new Order();
+	    order.setCustomer(customer);
+	    order.setOrderTime(LocalDateTime.now());
+	    order.setStatus("PLACED");
+	    order.setShippingAddress(shippingAddress);
+	    order.setRestaurant(restaurant);
 
-     
-        orderItemRepository.saveAll(orderItems);
+	    orderRepository.save(order);   
+	    List<OrderItem> orderItems = cartItems.stream().map(ci -> {
+	        OrderItem oi = new OrderItem();
+	        oi.setOrder(order);                          
+	        oi.setMenuItem(ci.getMenuItem());
+	        oi.setQuantity(ci.getQuantity());
+	        oi.setPrice(ci.getTotalPrice());
+	        return oi;
+	    }).collect(Collectors.toList());
 
-        cartItemRepository.deleteAll(cartItems);
+	    orderItemRepository.saveAll(orderItems);
 
-        return savedOrder;
-    }
+	    
+	    double total = orderItems.stream()
+	            .mapToDouble(OrderItem::getPrice)
+	            .sum();
+
+	    
+	    order.setTotalPrice(total);
+
+	    
+	    orderRepository.save(order);
+
+	    
+	    cartItemRepository.deleteAll(cartItems);
+
+	    return order;
+	}
+
+
 }

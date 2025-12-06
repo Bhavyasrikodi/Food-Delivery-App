@@ -17,6 +17,7 @@ public class Order {
     private LocalDateTime orderTime;
     private String status;
     private String shippingAddress;
+    private Double totalPrice;
 
     @ManyToOne
     private Customer customer;
@@ -29,18 +30,21 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(Long orderId, LocalDateTime orderTime, String status, String shippingAddress, Customer customer,
-			Restaurant restaurant) {
+	public Order(Long orderId, LocalDateTime orderTime, String status, String shippingAddress, Double totalPrice,
+			Customer customer, Restaurant restaurant) {
 		super();
 		this.orderId = orderId;
 		this.orderTime = orderTime;
 		this.status = status;
 		this.shippingAddress = shippingAddress;
+		this.totalPrice = totalPrice;
 		this.customer = customer;
 		this.restaurant = restaurant;
 	}
 
-	
+
+
+
 
 	public Long getOrderId() {
 		return orderId;
@@ -90,10 +94,19 @@ public class Order {
 		this.restaurant = restaurant;
 	}
 
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [id=" + orderId + ", orderTime=" + orderTime + ", status=" + status + ", shippingAddress="
-				+ shippingAddress + ", customer=" + customer + ", restaurant=" + restaurant + "]";
+		return "Order [orderId=" + orderId + ", orderTime=" + orderTime + ", status=" + status + ", shippingAddress="
+				+ shippingAddress + ", totalPrice=" + totalPrice + ", customer=" + customer + ", restaurant="
+				+ restaurant + "]";
 	}
 
 }
