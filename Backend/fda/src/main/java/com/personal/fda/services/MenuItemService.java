@@ -13,4 +13,12 @@ public interface MenuItemService {
 	public List<MenuItemOutDTO> getItemByCategory(String menuCategoryName);
 	
 	public List<MenuItemOutDTO> getItemByName(String menuItemName);
+	
+	public List<MenuItemOutDTO> getItemByNameBasedOnLocation(String menuItemName,Long customerId);
+	
+	public List<MenuItemOutDTO> filterItemsByDietaryInfo(Long customerId,String dietaryInfo);
+	
+	public List<MenuItemOutDTO> filterItemsBasedOnItemType(Long customerId,String itemName);
+	
+	public List<MenuItemOutDTO> filterItemsBasedOnItemTypeAndDietaryInfo(Long customerId,String itemName,String dietaryInfo);
 }

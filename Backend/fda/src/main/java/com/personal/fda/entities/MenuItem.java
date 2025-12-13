@@ -13,7 +13,7 @@ public class MenuItem {
     private String name;
     private String description;
     private Double price;
-    private String availabilityTime;
+   
     private String dietaryInfo;
     private String tasteInfo;
     private String nutritionalInfo;
@@ -32,14 +32,13 @@ public class MenuItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MenuItem(Long menuItemId, String name, String description, Double price, String availabilityTime, String dietaryInfo,
+	public MenuItem(Long menuItemId, String name, String description, Double price, String dietaryInfo,
 			String tasteInfo, String nutritionalInfo, boolean inStock, Restaurant restaurant, MenuCategory category) {
 		super();
 		this.menuItemId = menuItemId;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.availabilityTime = availabilityTime;
 		this.dietaryInfo = dietaryInfo;
 		this.tasteInfo = tasteInfo;
 		this.nutritionalInfo = nutritionalInfo;
@@ -82,13 +81,7 @@ public class MenuItem {
 		this.price = price;
 	}
 
-	public String getAvailabilityTime() {
-		return availabilityTime;
-	}
 
-	public void setAvailabilityTime(String availabilityTime) {
-		this.availabilityTime = availabilityTime;
-	}
 
 	public String getDietaryInfo() {
 		return dietaryInfo;
@@ -141,7 +134,7 @@ public class MenuItem {
 	@Override
 	public String toString() {
 		return "MenuItem [id=" + menuItemId + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", availabilityTime=" + availabilityTime + ", dietaryInfo=" + dietaryInfo + ", tasteInfo=" + tasteInfo
+				+ ", dietaryInfo=" + dietaryInfo + ", tasteInfo=" + tasteInfo
 				+ ", nutritionalInfo=" + nutritionalInfo + ", inStock=" + inStock + ", restaurant=" + restaurant
 				+ ", category=" + category + "]";
 	}

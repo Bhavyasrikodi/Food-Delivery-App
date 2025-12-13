@@ -72,5 +72,46 @@ public class MenuItemServiceImpl implements MenuItemService{
 	            .collect(Collectors.toList());
 	}
 
+	public List<MenuItemOutDTO> getItemByNameBasedOnLocation(String menuItemName,Long customerId){
+		List<MenuItem> items=this.menuItemRepository.searchItemBasedOnLocation(customerId, menuItemName);
+		return items.stream()
+				.map(item ->{
+					MenuItemOutDTO dto = this.modelMapper.map(item, MenuItemOutDTO.class);
+					return dto;
+				})
+				.collect(Collectors.toList());
+	}
+	
+	public List<MenuItemOutDTO> filterItemsByDietaryInfo(Long customerId,String dietaryInfo){
+		List<MenuItem> items=this.menuItemRepository.filterItemsBasedOnDietaryInfo(customerId, dietaryInfo);
+		return items.stream()
+				.map(item ->{
+					MenuItemOutDTO dto = this.modelMapper.map(item, MenuItemOutDTO.class);
+					return dto;
+				})
+				.collect(Collectors.toList());
+	}
+	
+	public List<MenuItemOutDTO> filterItemsBasedOnItemType(Long customerId,String itemName){
+		List<MenuItem> items=this.menuItemRepository.filterItemsBasedOnItemType(customerId, itemName);
+		return items.stream()
+				.map(item ->{
+					MenuItemOutDTO dto = this.modelMapper.map(item, MenuItemOutDTO.class);
+					return dto;
+				})
+				.collect(Collectors.toList());
+	}
+	
+	public List<MenuItemOutDTO> filterItemsBasedOnItemTypeAndDietaryInfo(Long customerId,String itemName,String dietaryInfo){
+		List<MenuItem> items=this.menuItemRepository.filterItemsBasedOnItemAndDietary(customerId, itemName, dietaryInfo);
+		return items.stream()
+				.map(item ->{
+					MenuItemOutDTO dto = this.modelMapper.map(item, MenuItemOutDTO.class);
+					return dto;
+				})
+				.collect(Collectors.toList());
+	}
+	
+	
 	
 }

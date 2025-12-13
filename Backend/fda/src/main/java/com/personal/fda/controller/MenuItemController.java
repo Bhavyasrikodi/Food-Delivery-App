@@ -47,4 +47,29 @@ public class MenuItemController {
 		List<MenuItemOutDTO> items=this.menuItemService.getItemByName(menuItemName);
 		return ResponseEntity.ok(items);
 	}
+	
+	@GetMapping("/searchItemsBasedOnLocation")
+	public ResponseEntity<List<MenuItemOutDTO>> getItemByNameBasedOnLocation(@RequestParam String menuItemName,@RequestParam Long customerId){
+		List<MenuItemOutDTO> items=this.menuItemService.getItemByNameBasedOnLocation(menuItemName, customerId);
+		return ResponseEntity.ok(items);
+	}
+	
+	@GetMapping("/filterItemsByDietaryInfo")
+	public ResponseEntity<List<MenuItemOutDTO>> filterItemsByDietaryInfo(@RequestParam Long customerId,@RequestParam String dietaryInfo){
+		List<MenuItemOutDTO> items=this.menuItemService.filterItemsByDietaryInfo(customerId, dietaryInfo);
+		return ResponseEntity.ok(items);
+	}
+	
+	@GetMapping("/filterItemsByItemName")
+	public ResponseEntity<List<MenuItemOutDTO>> filterItemsByItemName(@RequestParam Long customerId,@RequestParam String itemName){
+		List<MenuItemOutDTO> items=this.menuItemService.filterItemsBasedOnItemType(customerId, itemName);
+		return ResponseEntity.ok(items);
+	}
+	
+	@GetMapping("/filterItemsByItemNameAndDietaryInfo")
+	public ResponseEntity<List<MenuItemOutDTO>> filterItemsByItemNameAndDietaryInfo(@RequestParam Long customerId,@RequestParam String itemName,@RequestParam String dietaryInfo){
+		List<MenuItemOutDTO> items=this.menuItemService.filterItemsBasedOnItemTypeAndDietaryInfo(customerId, itemName, dietaryInfo);
+		return ResponseEntity.ok(items);
+	}
+	
 }

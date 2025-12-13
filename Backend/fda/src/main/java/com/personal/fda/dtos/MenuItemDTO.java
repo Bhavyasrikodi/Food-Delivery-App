@@ -5,7 +5,6 @@ public class MenuItemDTO {
 	private String name;
     private String description;
     private Double price;
-    private String availabilityTime;
     private String dietaryInfo;
     private String tasteInfo;
     private String nutritionalInfo;
@@ -14,13 +13,12 @@ public class MenuItemDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MenuItemDTO(String name, String description, Double price, String availabilityTime, String dietaryInfo,
+	public MenuItemDTO(String name, String description, Double price, String dietaryInfo,
 			String tasteInfo, String nutritionalInfo, boolean inStock) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.availabilityTime = availabilityTime;
 		this.dietaryInfo = dietaryInfo;
 		this.tasteInfo = tasteInfo;
 		this.nutritionalInfo = nutritionalInfo;
@@ -43,12 +41,6 @@ public class MenuItemDTO {
 	}
 	public void setPrice(Double price) {
 		this.price = price;
-	}
-	public String getAvailabilityTime() {
-		return availabilityTime;
-	}
-	public void setAvailabilityTime(String availabilityTime) {
-		this.availabilityTime = availabilityTime;
 	}
 	public String getDietaryInfo() {
 		return dietaryInfo;
@@ -76,8 +68,7 @@ public class MenuItemDTO {
 	}
 	@Override
 	public String toString() {
-		return "MenuItemDTO [name=" + name + ", description=" + description + ", price=" + price + ", availabilityTime="
-				+ availabilityTime + ", dietaryInfo=" + dietaryInfo + ", tasteInfo=" + tasteInfo + ", nutritionalInfo="
+		return "MenuItemDTO [name=" + name + ", description=" + description + ", price=" + price + ", dietaryInfo=" + dietaryInfo + ", tasteInfo=" + tasteInfo + ", nutritionalInfo="
 				+ nutritionalInfo + ", inStock=" + inStock + "]";
 	}
     

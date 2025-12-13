@@ -1,8 +1,11 @@
 package com.personal.fda.controller;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +33,11 @@ public class RestaurantController {
 		Restaurant restaurant=this.restaurantService.addRestaurant(ownerId, restaurantDTO);
 		RestaurantDTO dto=this.modelMapper.map(restaurant,RestaurantDTO.class);
 		return ResponseEntity.ok(dto);
+	}
+	
+	@GetMapping("/getRestaurantsByLocation")
+	public ResponseEntity<List<RestaurantDTO>> getRestaurant(@RequestParam Long customerId){
+		List<RestaurantDTO> restaurants=this.restaurantService.getRestaurant(customerId);
+		return ResponseEntity.ok(restaurants);
 	}
 }
