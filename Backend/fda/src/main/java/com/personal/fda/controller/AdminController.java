@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.personal.fda.dtos.AdminUserDTO;
 import com.personal.fda.entities.Admin;
+import com.personal.fda.entities.Role;
 import com.personal.fda.services.AdminService;
 
 @RestController
-@RequestMapping("/api/v1/fda/admin")
+@RequestMapping("/api/auth/v1/fda/admin")
 @ResponseBody
 public class AdminController {
 
@@ -27,10 +28,12 @@ public class AdminController {
 	@PostMapping("/createAdmin")
 	public ResponseEntity<AdminUserDTO> createAdmin( @RequestBody AdminUserDTO adminUserDTO ) {
 		Admin admin=this.adminService.createAdmin(adminUserDTO);
-		AdminUserDTO adminUserDto=this.modelMapper.map(admin,AdminUserDTO.class);
-		adminUserDto.setPassword(adminUserDTO.getPassword());
-		adminUserDto.setRole(adminUserDTO.getRole());
+		AdminUserDTO adminUserDto=this.modelMapper.map(admin,AdminUserDTO.class);	
+		
 		adminUserDto.setUsername(adminUserDTO.getUsername());
+		adminUserDto.setPassword(null);
+
+		adminUserDto.setRole(Role.ADMIN);
 		return ResponseEntity.ok(adminUserDto);
 	}	
 	

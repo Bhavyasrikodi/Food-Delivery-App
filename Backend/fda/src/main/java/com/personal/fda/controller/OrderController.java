@@ -25,4 +25,15 @@ public class OrderController {
         Order order = orderService.placeOrderFromCart(customerId);
         return ResponseEntity.ok(order);
     }
+	
+	@PostMapping("/orderDirect")
+	public ResponseEntity<Order> placeDirectOrder(
+	        @RequestParam Long customerId,
+	        @RequestParam Long menuItemId,
+	        @RequestParam int quantity) {
+
+	    return ResponseEntity.ok(
+	            orderService.placeDirectOrder(customerId, menuItemId, quantity)
+	    );
+	}
 }

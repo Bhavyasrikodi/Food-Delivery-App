@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.personal.fda.dtos.CustomerUserDTO;
 import com.personal.fda.entities.Customer;
+import com.personal.fda.entities.Role;
 import com.personal.fda.services.CustomerService;
 
 @RestController
-@RequestMapping("/api/v1/fda/customer")
+@RequestMapping("/api/auth/v1/fda/customer")
 @ResponseBody
 public class CustomerController {
 
@@ -28,9 +29,12 @@ public class CustomerController {
 	public ResponseEntity<CustomerUserDTO> creatCustomer( @RequestBody CustomerUserDTO customerUserDTO ) {
 		Customer customer=this.customerService.createCustomer(customerUserDTO);
 		CustomerUserDTO customerUserDto=this.modelMapper.map(customer,CustomerUserDTO.class);
-		customerUserDto.setPassword(customerUserDTO.getPassword());
-		customerUserDto.setRole(customerUserDTO.getRole());
+		
 		customerUserDto.setUsername(customerUserDTO.getUsername());
+		customerUserDto.setPassword(null);
+
+		customerUserDto.setRole(Role.CUSTOMER);
+
 		return ResponseEntity.ok(customerUserDto);
 	}	
 	

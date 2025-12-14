@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.personal.fda.dtos.OwnerUserDTO;
 import com.personal.fda.entities.RestaurantOwner;
+import com.personal.fda.entities.Role;
 import com.personal.fda.services.OwnerService;
 
 @RestController
-@RequestMapping("/api/v1/fda/owner")
+@RequestMapping("/api/auth/v1/fda/owner")
 @ResponseBody
 public class OwnerController {
 	@Autowired
@@ -27,9 +28,12 @@ public class OwnerController {
 	public ResponseEntity<OwnerUserDTO> creatOwner( @RequestBody OwnerUserDTO ownerUserDTO ) {
 		RestaurantOwner owner=this.ownerService.createOwner(ownerUserDTO);
 		OwnerUserDTO ownerUserDto=this.modelMapper.map(owner,OwnerUserDTO.class);
-		ownerUserDto.setPassword(ownerUserDTO.getPassword());
-		ownerUserDto.setRole(ownerUserDTO.getRole());
+		
 		ownerUserDto.setUsername(ownerUserDTO.getUsername());
+		
+		ownerUserDto.setPassword(null);
+
+		ownerUserDto.setRole(Role.OWNER);
 		return ResponseEntity.ok(ownerUserDto);
 	}	
 }
